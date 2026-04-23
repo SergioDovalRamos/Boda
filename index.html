@@ -13,133 +13,224 @@
       font-family: Georgia, serif;
       background: #f9f5f0;
       color: #333;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     header {
-      background:
-        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-        url("https://www.costacaion.es/wp-content/uploads/hero.jpg") center/cover no-repeat;
-      color: white;
-      text-align: center;
-      padding: 80px 18px;
-    }
-
-    header h1 {
+      width: 100%;
       margin: 0;
-      font-size: 3em;
-      line-height: 1.15;
+      padding: 0;
     }
 
-    header p {
-      margin: 16px 0 0;
+    .portada {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .portada::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("costacaion.jpg") center / cover no-repeat;
+      filter: blur(18px) brightness(0.7);
+      transform: scale(1.1);
+      z-index: 0;
+    }
+
+    .portada img {
+      position: relative;
+      width: 100%;
+      max-width: 1500px;
+      height: auto;
+      display: block;
+      z-index: 1;
+      border-radius: 12px;
+    }
+
+    .portada-texto {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 60px;
+      text-align: center;
+      color: white;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.7);
+    }
+
+    .portada-texto h1 {
+      margin: 0;
+      font-size: 2.6em;
+      line-height: 1.15;
+      font-weight: normal;
+    }
+
+    .portada-texto p {
+      margin: 12px 0 0;
       font-size: 1.2em;
     }
 
+    .contenedor {
+      max-width: 1700px;
+      margin: 18px auto 20px;
+      padding: 0 16px;
+    }
+
+    .fila-superior {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 20px;
+      margin-bottom: 20px;
+      align-items: stretch;
+    }
+
+    .fila-inferior {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+      margin-bottom: 20px;
+      align-items: stretch;
+    }
+
     .bloque {
-      max-width: 900px;
-      margin: 28px auto;
-      padding: 22px;
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+      padding: 20px;
+      height: 100%;
     }
 
     h2 {
-      margin: 0 0 12px;
-      color: #8b5a2b;
-      border-bottom: 2px solid #d4a373;
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: #6f4e6c;
+      border-bottom: 2px solid #e5d2e1;
       padding-bottom: 8px;
-      font-size: 1.6em;
-    }
-
-    h3 {
-      margin: 18px 0 6px;
-      font-size: 1.15em;
+      font-size: 1.5em;
     }
 
     .dato {
-      margin: 8px 0;
+      margin: 7px 0;
     }
 
-    .nota {
-      margin-top: 12px;
-      padding: 12px 14px;
-      background: #fff7ed;
-      border: 1px solid #f1dcc7;
+    .foto-bloque img {
+      width: 100%;
       border-radius: 10px;
-      font-size: 0.98em;
+      display: block;
     }
 
     .boton {
       display: inline-block;
-      margin-top: 14px;
+      margin-top: 12px;
       padding: 12px 16px;
-      background: #8b5a2b;
+      background: #6f4e6c;
       color: white;
       text-decoration: none;
       border-radius: 8px;
-      font-size: 1.05em;
-      transition: background 0.25s ease, transform 0.08s ease;
+      transition: background 0.2s ease;
+      max-width: 100%;
+      white-space: nowrap;
     }
 
     .boton:hover {
-      background: #6d4621;
+      background: #563a53;
     }
 
-    .boton:active {
-      transform: translateY(1px);
+    .nota {
+      margin-top: 14px;
+      padding: 14px;
+      background: #f9eaf0;
+      border: 1px solid #f1dce5;
+      border-radius: 10px;
+      white-space: pre-line;
+      text-align: center;
     }
 
     .mapa {
-      margin-top: 12px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+      display: flex;
+      flex-direction: column;
     }
 
     .mapa iframe {
       width: 100%;
-      height: 340px;
+      flex: 1;
+      min-height: 300px;
       border: 0;
+      border-radius: 10px;
       display: block;
+    }
+
+    .mapa .boton {
+      align-self: flex-start;
+    }
+
+    .video iframe {
+      width: 100%;
+      height: 420px;
+      border: 0;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .columna-derecha {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .columna-derecha > .bloque {
+      flex: 1;
+    }
+
+    .columna-derecha > .bloque + .bloque {
+      margin-top: 20px;
     }
 
     footer {
       text-align: center;
-      margin-top: 26px;
-      padding: 18px 12px;
-      background: #8b5a2b;
+      margin-top: 20px;
+      padding: 16px;
+      background: #6f4e6c;
       color: white;
-      font-size: 1em;
     }
 
-    @media (max-width: 700px) {
-      header {
-        padding: 55px 14px;
+    @media (max-width: 900px) {
+      .portada-texto {
+        justify-content: center;
+        padding: 18px 14px;
       }
 
-      header h1 {
-        font-size: 2.05em;
+      .portada-texto h1 {
+        font-size: 1.9em;
       }
 
-      header p {
-        font-size: 1.05em;
+      .fila-superior,
+      .fila-inferior {
+        grid-template-columns: 1fr;
       }
 
-      .bloque {
-        margin: 16px 10px;
-        padding: 16px;
+      .mapa iframe,
+      .video iframe {
+        height: 240px;
       }
 
       .boton {
         display: block;
         width: 100%;
         text-align: center;
+        white-space: normal;
       }
 
-      .mapa iframe {
-        height: 260px;
+      .mapa .boton {
+        align-self: stretch;
       }
     }
   </style>
@@ -147,104 +238,125 @@
 
 <body>
 
-  <header>
-    <h1>
-      Alba Tizón Quinteiro<br>
-      y<br>
-      Sergio Doval Ramos
-    </h1>
-    <p>¡Ven a celebrar nuestro bodorrio!</p>
-  </header>
-
-  <img src="fotoplaya.jpg" style="max-width:100%; height:auto; display:block; margin:30px auto; border-radius:10px;">
-
-  <section class="bloque" id="detalles">
-    <h2>Detalles</h2>
-
-    <div class="dato"><strong>Fecha:</strong> Sábado 13 de Junio de 2026</div>
-    <div class="dato"><strong>Lugar:</strong> Costa Caión</div>
-    <div class="dato"><strong>Hora asistencia:</strong> 17:30 h</div>
-    <div class="dato"><strong>Hora ceremonia:</strong> 18:00 h</div>
-    <div class="dato"><strong>Hora de aperitivos:</strong> 19:00 h</div>
-    <div class="dato"><strong>Hora banquete:</strong> 21:00 h</div>
-    <div class="dato"><strong>Hora de cócteles:</strong> 00:00 h</div>
-
-
-    <div class="dato">
-      <strong>Dirección:</strong> Campo da Costa 1, 15145 Caión, A Laracha, A Coruña
+<header>
+  <div class="portada">
+    <img src="costacaion.jpg">
+    <div class="portada-texto">
+      <h1>
+        Alba Tizón Quinteiro<br>
+        y<br>
+        Sergio Doval Ramos
+      </h1>
+      <p>¡Ven a celebrar nuestra unión!</p>
     </div>
-    <div class="dato"><strong>Vestimenta:</strong> Elegante / Elegante informal</div>
+  </div>
+</header>
 
-    <div class="nota">
-  Si deseas hacernos un regalo, este es nuestro número de cuenta:<br><br>
-  <strong>ES26&nbsp;0073&nbsp;0100&nbsp;5407&nbsp;9461&nbsp;7007</strong>
+<div class="contenedor">
+
+  <div class="fila-superior">
+    <div class="bloque foto-bloque">
+      <img src="fotoplaya.jpg">
     </div>
 
-    <h3>Cómo llegar</h3>
-    <p>
-      Desde A Coruña: AC-552 dirección Carballo / Malpica, pasando por A Laracha.
-      Recomendamos usar GPS. Hay aparcamiento gratuito en las instalaciones.
-    </p>
+    <section class="bloque">
+      <h2>Detalles</h2>
 
-    <h3>Mapa</h3>
+      <div class="dato"><strong>Fecha:</strong> 13 de Junio de 2026</div>
+      <div class="dato"><strong>Lugar:</strong> Costa Caión</div>
+      <div class="dato"><strong>Hora asistencia:</strong> 17:30</div>
+      <div class="dato"><strong>Hora ceremonia:</strong> 18:00</div>
+      <div class="dato"><strong>Hora de aperitivos:</strong> 19:00</div>
+      <div class="dato"><strong>Hora banquete:</strong> 21:00</div>
+      <div class="dato"><strong>Hora de cócteles:</strong> 00:00</div>
 
-<div style="
-  margin-top:12px;
-  border-radius:10px;
-  overflow:hidden;
-  box-shadow:0 4px 14px rgba(0,0,0,0.10);
-">
-  <iframe
-    title="Mapa de Costa Caión"
-    src="https://www.google.com/maps?q=Campo%20da%20Costa%201%2C%20Caión%2C%20A%20Laracha%2C%20A%20Coruña&z=17&output=embed"
-    style="width:100%; height:420px; border:0; display:block;"
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
+      <div class="nota">
+Como ahora está de moda
+Todo lo digital
+Os daremos unos dígitos
+Por si los queréis usar
+
+Aceptamos transferencia
+Aceptamos sobre y cash
+Y cualquier otra cosa
+Que nos queráis regalar
+
+Ya más no preguntéis:
+El número de cuenta es ES26
+0073
+No los pongáis del revés
+0100
+
+Vuestra presencia agradecemos
+5407
+Disfrutaréis del banquete
+9461
+Y en el momento oportuno
+7007
+De la fiesta y el guateque
+
+<strong>ES26 0073 0100 5407 9461 7007</strong>
+      </div>
+    </section>
+  </div>
+
+  <div class="fila-inferior">
+    <section class="bloque mapa">
+      <h2>Mapa</h2>
+      <iframe src="https://www.google.com/maps?q=Campo%20da%20Costa%201%2C%20Caión&output=embed"></iframe>
+
+      <a href="https://www.google.com/maps?q=Campo%20da%20Costa%201%2C%20Caión" target="_blank" class="boton">
+        Abrir en Google Maps
+      </a>
+    </section>
+
+    <div class="columna-derecha">
+      <section class="bloque">
+        <h2>Cómo llegar</h2>
+        <p>
+          Desde A Coruña: Toma la AC-552 dirección Carballo / Malpica, pasa por A Laracha y sigue indicaciones a Caión.
+          El lugar está bien señalizado. Tiempo aproximado: 30 minutos.
+        </p>
+        <p>
+          Recomendamos usar GPS con la dirección exacta: Campo da Costa 1, Caión.
+          Hay amplio aparcamiento gratuito en las instalaciones.
+        </p>
+
+        <h2 style="margin-top: 20px;">Alojamiento</h2>
+        <p>
+          Costa Caión cuenta con 10–11 habitaciones de alojamiento rural.
+        </p>
+        <p>
+          Otras opciones cercanas: hoteles en A Laracha o Carballo,
+          apartamentos o AirBnB en Caión.
+        </p>
+      </section>
+
+      <section class="bloque">
+        <h2>Confirmación</h2>
+        <p>Recuerda confirmar tu asistencia si aún no lo has hecho.</p>
+
+        <a href="https://forms.gle/PDpuyNZjZn5ywjCp9" target="_blank" class="boton">
+          Confirmar asistencia
+        </a>
+
+        <h2 style="margin-top: 20px;">Autobuses</h2>
+        <p>Próximamente añadiremos aquí horarios y paradas.</p>
+        <p><strong>Salida de Caión: 4:00 AM</strong></p>
+      </section>
+    </div>
+  </div>
+
+  <section class="bloque video">
+    <iframe src="https://www.youtube.com/embed/p-cH9ggDX4M"></iframe>
+  </section>
+
 </div>
 
-<a
-  href="https://www.google.com/maps?q=Campo%20da%20Costa%201%2C%20Caión%2C%20A%20Laracha%2C%20A%20Coruña&z=17"
-  target="_blank"
-  rel="noopener noreferrer"
-  style="
-    display:inline-block;
-    margin-top:12px; 
-    padding:12px 16px;
-    background:#8b5a2b;
-    color:white;
-    text-decoration:none;
-    border-radius:8px;
-    font-size:1.05em;
-  ">
-  Abrir en Google Maps
-</a>
-
-
-    <h3>Alojamiento</h3>
-    <p>Costa Caión cuenta con 10 habitaciones de alojamiento rural.</p>
-    <p>Otras opciones: hoteles en A Coruña, A Laracha o Carballo.</p>
-
-    <div class="nota">
-      Si tienes cualquier duda, escríbenos y te ayudamos.
-    </div>
-  </section>
-
-  <section class="bloque" id="rsvp">
-    <h2>Confirmación</h2>
-    <p>
-      Para organizarnos bien, confirma tu asistencia antes del
-      <strong>15 de Mayo de 2026</strong> en el formulario.
-    </p>
-
-    <a
-      class="boton"
-      href="https://forms.gle/PDpuyNZjZn5ywjCp9"
-      target="_blank"
-      rel="noopener noreferrer">
-      Confirmar asistencia
-    </a>
-  </section>
+<footer>
+  Con mucho cariño<br>
+  Sergio y Alba
+</footer>
 
 </body>
 </html>
