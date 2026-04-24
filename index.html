@@ -154,6 +154,18 @@
       text-align: center;
     }
 
+    .copiable {
+      cursor: pointer;
+      user-select: text;
+    }
+
+    .mensaje-copiado {
+      display: none;
+      margin-top: 8px;
+      color: #6f4e6c;
+      font-weight: bold;
+    }
+
     .mapa {
       display: flex;
       flex-direction: column;
@@ -202,14 +214,21 @@
       color: white;
     }
 
+    /* 🔥 SOLO MÓVIL (arreglo del problema) */
     @media (max-width: 900px) {
       .portada-texto {
         justify-content: center;
-        padding: 18px 14px;
+        padding: 12px;
       }
 
       .portada-texto h1 {
-        font-size: 1.9em;
+        font-size: 1.3em;
+        line-height: 1.15;
+      }
+
+      .portada-texto p {
+        font-size: 0.85em;
+        margin-top: 8px;
       }
 
       .fila-superior,
@@ -262,7 +281,7 @@
     <section class="bloque">
       <h2>Detalles</h2>
 
-      <div class="dato"><strong>Fecha:</strong> 13 de Junio de 2026</div>
+      <div class="dato"><strong>Fecha:</strong> Sábado 13 de Junio de 2026</div>
       <div class="dato"><strong>Lugar:</strong> Costa Caión</div>
       <div class="dato"><strong>Hora asistencia:</strong> 17:30</div>
       <div class="dato"><strong>Hora ceremonia:</strong> 18:00</div>
@@ -285,17 +304,19 @@ Ya más no preguntéis:
 El número de cuenta es ES26
 0073
 No los pongáis del revés
-0100
 
+0100
 Vuestra presencia agradecemos
 5407
 Disfrutaréis del banquete
+
 9461
 Y en el momento oportuno
 7007
 De la fiesta y el guateque
 
-<strong>ES26 0073 0100 5407 9461 7007</strong>
+<strong class="copiable" onclick="copiarCuenta()" ontouchstart="iniciarPulsacion()" ontouchend="cancelarPulsacion()">ES26 0073 0100 5407 9461 7007</strong>
+<div id="mensajeCopiado" class="mensaje-copiado">Copiado</div>
       </div>
     </section>
   </div>
@@ -324,7 +345,7 @@ De la fiesta y el guateque
 
         <h2 style="margin-top: 20px;">Alojamiento</h2>
         <p>
-          Costa Caión cuenta con 10–11 habitaciones de alojamiento rural.
+          Costa Caión cuenta con 10-11 habitaciones de alojamiento rural.
         </p>
         <p>
           Otras opciones cercanas: hoteles en A Laracha o Carballo,
@@ -334,15 +355,17 @@ De la fiesta y el guateque
 
       <section class="bloque">
         <h2>Confirmación</h2>
-        <p>Recuerda confirmar tu asistencia si aún no lo has hecho.</p>
+        <p>Recuerda confirmar tu asistencia antes del 15 de Mayo si aún no lo has hecho.</p>
 
         <a href="https://forms.gle/PDpuyNZjZn5ywjCp9" target="_blank" class="boton">
           Confirmar asistencia
         </a>
 
         <h2 style="margin-top: 20px;">Autobuses</h2>
-        <p>Próximamente añadiremos aquí horarios y paradas.</p>
-        <p><strong>Salida de Caión: 4:00 AM</strong></p>
+        <p><strong>Autobús de ida:</strong></p>
+        <p>Saldrá de Coruña a las (hora y parada por confirmar, próximamente lo añadiremos) con destino Caión</p>
+        <p><strong>Autobús de vuelta:</strong></p>
+        <p>Saldrá de Caión a las 4:00 AM con destino Coruña</p>
       </section>
     </div>
   </div>
@@ -358,5 +381,32 @@ De la fiesta y el guateque
   Sergio y Alba
 </footer>
 
+<script>
+let temporizador;
+
+function copiarCuenta() {
+  const texto = "ES26 0073 0100 5407 9461 7007";
+  navigator.clipboard.writeText(texto);
+
+  const mensaje = document.getElementById("mensajeCopiado");
+  mensaje.style.display = "block";
+
+  setTimeout(() => {
+    mensaje.style.display = "none";
+  }, 2000);
+}
+
+function iniciarPulsacion() {
+  temporizador = setTimeout(() => {
+    copiarCuenta();
+  }, 500);
+}
+
+function cancelarPulsacion() {
+  clearTimeout(temporizador);
+}
+</script>
+
 </body>
+</html>
 </html>
